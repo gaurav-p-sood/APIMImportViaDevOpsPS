@@ -1,0 +1,28 @@
+#This is a yaml template file , refer this template in your yaml pipeline after service deploy using following code in main pipeline without 'hash symbol' from line 2 till line 11. 
+#- job: 'APIM_Import'
+#    displayName: 'Import API into APIM'
+#    pool:
+#      name: 'Default'
+#    variables:
+#    - group: 'MY-VARIABLE-GROUP-DEV'
+#    steps:
+#    - template: apim-import-template.yml
+#      parameters:
+#        subscriptionName: 'MY SPN NAME'
+
+parameters:
+  - name: subscriptionName
+    type: string
+
+steps:
+  - checkout: self
+    clean: true
+  - task: AzurePowerShell@5
+    displayName: 'Azure PowerShell script: FilePath'
+    inputs:
+      azureSubscription: '${{ parameters.subscriptionName }}' # Name of the service principal or connection name 
+      ScriptPath: pipelines/ImportIntoAPIM.ps1
+      ScriptArguments: '-p_apiPrefix $(apiPrefix) -p_rgName $(rgName) -p_apimInstance $(apimInstance) -p_apiVersion $(apiVersion) -p_swaggerPath $(swaggerPath)  -p_productName $(productName) -p_backendURL $(backendURL)'
+      azurePowerShellVersion: LatestVersion
+
+...
