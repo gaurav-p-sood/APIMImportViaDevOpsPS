@@ -3,4 +3,6 @@ This Repo contains the Powershell to automatically import the Microservice Swagg
 
 This also also applies the policy to set backend url. 
 
-Runb the power shell via piepline task Azure Powershell @5 in Azure DevOps and you must be good-to-go.
+Run the power shell via piepline task Azure Powershell @5 in Azure DevOps and you must be good-to-go.
+
+A yaml template file based on Azure DevOps has been provided as well. 
