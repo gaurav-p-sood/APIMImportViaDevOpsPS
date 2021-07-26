@@ -1,7 +1,16 @@
 # APIMImportViaDevOpsPS
-This Repo contains the Powershell to automatically import the Microservice Swagger into APIM after the service is deployed into the environment . The script can also create NamedValues and Products for API , if they are not found
 
-This also also applies the policy to set backend url. 
+This Repo contains the Powershell to automatically on-board  an API via a valid swagger file into APIM 
+
+The script can be run after as task in Azure DevOps after the API backend service is deployed . 
+
+The script will create the API with a API version set and path versioning scheme. 
+
+The script will also create NamedValues and Product for API , if they are not found.
+
+It then applies the policy to set backend url value retrieval from namved value pair on API scope. 
+
+Script also enables the CORS policy on the APIM. 
 
 Run the power shell via piepline task Azure Powershell @5 in Azure DevOps and you must be good-to-go.
 
